@@ -189,7 +189,7 @@ def setup_project():
                             break  # QA war erfolgreich → zur nächsten Planungseinheit
 
         save_project_state(project_state)
-        generate_readme(project_state, local_path)
+        generate_readme(project_state, local_path, repo)
 
         log(f"📌 Feature '{title}' wurde verarbeitet – Status bitte manuell prüfen.")
 

@@ -1,5 +1,6 @@
 
 import os
+from write_utils import write_and_commit_file
 from github_utils import (
     push_file_to_repo,
     comment_on_issue
@@ -68,9 +69,9 @@ Der filepfad soll sinnvoll zur Funktion passen (z. B. lib/screens/, lib/widget
             comment_on_issue(repo, number, comment)
         return None
 
-    push_file_to_repo(repo, filepath, code, f"💻 Frontend-Code für Issue #{number}")
+    write_and_commit_file(repo, local_path, filepath, code, f"💻 Frontend-Code für Issue #{number}")
     log(f"✅ Datei geschrieben: {filepath}")
 
     # README aktualisieren
-    generate_readme(load_project_state(), local_path)
+    generate_readme(load_project_state(), local_path, repo)
     return filepath

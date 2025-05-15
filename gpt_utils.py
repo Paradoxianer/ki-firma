@@ -1,4 +1,3 @@
-
 import os
 import json
 import re
@@ -59,18 +58,24 @@ def call_gpt_and_parse_json(agent_name, prompt, max_attempts=10):
             parsed = extract_json_from_text(result)
             if parsed:
                 return parsed
-            prompt = f"""
-Es wurde folgende Frage an Deepseek gestellt
-"""
-prompt
-"""
-Deepseek lieferte folgendes zurück
 
-"""
+            # GPT um Hilfe bitten
+            fallback_prompt = f"""
+Die folgende GPT-Antwort konnte nicht als JSON interpretiert werden.
+
+Ursprünglicher Prompt:
+\"\"\"
+{prompt}
+\"\"\"
+
+GPT-Antwort:
+\"\"\"
 {result}
+\"\"\"
+
+Bitte gib die korrigierte Antwort **ausschließlich** als gültiges JSON-Array zurück.
 """
-Die Ausgabe konnte nicht als JSON geparsed werden. 
-Erwartetes Format: Liste von Objekten. Gib einen verbesserten Prompt zurück
-"""
-            prompt = call_ollama(prompt)
+            prompt = fallback_prompt
+
     raise ValueError("GPT konnte nach mehreren Versuchen kein gültiges JSON liefern.")
+

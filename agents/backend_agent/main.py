@@ -1,4 +1,5 @@
 import os
+from write_utils import write_and_commit_file
 from github_utils import (
     push_file_to_repo,
     comment_on_issue,
@@ -48,7 +49,7 @@ Beschreibung:
 Erweitere die Markdown-API-Doku, wenn nötig. Gib die **neue api_docs.md** komplett zurück.
 """
     new_md = call_ollama(prompt)
-    push_file_to_repo(repo, "docs/api_docs.md", new_md, "📄 API-Dokumentation aktualisiert")
+    write_and_commit_file(repo, local_path, "docs/api_docs.md", new_md, "📄 API-Dokumentation aktualisiert")
 
 def run_backend_agent_for_issue(issue, repo, local_path):
     number = issue["issue_number"]
@@ -113,7 +114,7 @@ Wie würdest du dieses Issue auf GitHub kommentieren?
     filepath = response["file"]
     code = response["code"]
 
-    push_file_to_repo(repo, filepath, code, f"💻 Backend-Code für Issue #{number}")
+    write_and_commit_file(repo, local_path, filepath, code, f"💻 Backend-Code für Issue #{number}")
     log(f"✅ Datei geschrieben: {filepath}")
 
     # Aktualisiere API-Doku
@@ -121,7 +122,7 @@ Wie würdest du dieses Issue auf GitHub kommentieren?
 
     # README aktualisieren
     from project_state import load_project_state  # Falls getrennt
-    generate_readme(load_project_state(), local_path)
+    generate_readme(load_project_state(), local_path, repo)
 
     return filepath
 
