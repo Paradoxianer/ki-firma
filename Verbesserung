@@ -1,0 +1,15 @@
+* Planungs_agenten 2 x 3 durchlaufen lassen (mit folgenden issues und folgendem Code... was wäre das nächste sinnvolle zu implentieren... erzeuge daraus ein issue mit einer ausführlichen und klaren Beschreibung
+* Backend_Agenten mit API / zugriffs definition
+* frontend_agent --> repository einlesen?
+* qa_agent --> repository einlesen?
+
+*manager_agent --> setup ... correktes repository flutter unter angegebenen Pfad einrichten?
+
+backend_agent
+und frontend_agent
+
+--> besser fehlerbehandlung... lasse gpt selber einen bessern passenderen Promt erstellen
+
+--> readme.md warum benötigen wir project_state.json... können doch direkt in readme.md schreiben und diese pushen..
+
+ 

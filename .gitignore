@@ -1,0 +1,31 @@
+# Virtuelle Umgebungen
+venv/
+.venv/
+
+# Python Cache & Logs
+__pycache__/
+*.py[cod]
+*.log
+*.sqlite3
+
+# GPT/Agent Cache
+.summaries.json
+
+# Editor-/IDE-Dateien
+.env
+.idea/
+.vscode/
+.DS_Store
+
+# Node/Dart falls benötigt
+node_modules/
+build/
+dist/
+.dart_tool/
+packages
+.pub-cache/
+.flutter-plugins
+pubspec.lock
+
+# Output von PyInstaller etc.
+*.spec
